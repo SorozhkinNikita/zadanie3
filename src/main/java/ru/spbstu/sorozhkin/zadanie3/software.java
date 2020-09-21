@@ -5,13 +5,13 @@ import java.awt.*;
 import java.awt.event.*;
 
 class software {
-    public Image img;
-    public int x,y;
-    public Boolean act;
-    Timer timerUpdate;
-    public int speed = 1;
+    Image img;
+    int x,y;
+    Boolean act;
+    private Timer timerUpdate;
+    int speed = 1;
 
-    public software(Image img){
+    software(Image img){
         timerUpdate = new Timer(25, new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 vniz();
@@ -21,15 +21,15 @@ class software {
         act = false;
     }
 
-    public void start(){
+    void start(){
         timerUpdate.start();
         y = 0;
         x = (int)(Math.random()*700);
         act=true;
     }
 
-    public void vniz(){
-        if (act==true){
+    private void vniz(){
+        if (act){
             y+=speed;
         }
         if((y+img.getHeight(null))>=470){
@@ -37,8 +37,8 @@ class software {
         }
     }
 
-    public  void draw(Graphics gr){
-        if (act==true){
+    void draw(Graphics gr){
+        if (act){
              gr.drawImage(img, x, y, null);
         }
     }
